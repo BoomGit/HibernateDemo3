@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.boom.entity.Customer" table="t_customer">
+		<id name="cid" column="CID">
+			<generator class="native"></generator>
+		</id>
+		<property name="custName" column="CustName"></property>
+		<property name="custLevel" column="CustLevel"></property>
+		<property name="custSourse" column="CustSourse"></property>
+		<property name="custPhone" column="CustPhone"></property>
+		<property name="custMobile" column="CustMobile"></property>
+		<!--对应集合名称-->
+		<set name="linkMen" cascade="save-update">
+		<!--双向维护-->
+		<key column="clid"></key>
+		<!--体现一对多-->	
+			<one-to-many class="com.boom.entity.LinkMan" />
+		</set>
+	</class>
+</hibernate-mapping>
